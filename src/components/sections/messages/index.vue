@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <section class="section-messages">
         messages
-    </div>
+    </section>
 </template>
 
 <script>
@@ -9,5 +9,8 @@
 </script>
 
 <style scoped lang="scss">
-
+.section-messages {
+    padding: 0 20px 40px 40px;
+    box-sizing: border-box;
+}
 </style>

@@ -4,6 +4,7 @@ import store from './store'
 import router from './router'
 import './assets/scss/main.scss'
 import '@/components/ui'
+import '@/components/icons'
 
 if (process.env.NODE_ENV === 'development') {
   require('./assets/scss/breakpoints-helpers.scss')

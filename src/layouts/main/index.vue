@@ -29,6 +29,7 @@ export default {
         &__aside {
             background-color: $color--bg-nav;
             width: 300px;
+            flex-shrink: 0;
         }
         &__body {
             box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);

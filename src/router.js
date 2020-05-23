@@ -26,7 +26,7 @@ export default new VueRouter({
                     name: 'dialog',
                     components: {
                         nav: require('./components/sections/nav').default,
-                        default: require('./pages/chatroom').default
+                        default: require('./pages/dialog').default
                     },
                     meta: {
                         title: `Диалог`
