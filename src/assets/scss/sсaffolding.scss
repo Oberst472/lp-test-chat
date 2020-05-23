@@ -35,5 +35,5 @@ input {
 }
 
 .__bar-is-vertical {
-    background-color: $color--primary !important;
+    background-color: rgba($color--primary, 0.5) !important;
 }

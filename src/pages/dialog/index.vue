@@ -2,10 +2,10 @@
     <section class="page-dialog">
         <div class="page-dialog__content">
             <div class="page-dialog__messages">
-                <SectionMessages></SectionMessages>
+                <SectionMessages/>
             </div>
             <div class="page-dialog__entry">
-                <SectionEntryMessage placeholder="Введите текст"></SectionEntryMessage>
+                <SectionEntryMessage placeholder="Введите текст"/>
             </div>
         </div>
     </section>
@@ -36,6 +36,7 @@
 
         &__messages {
             flex-grow: 1;
+            display: flex;
         }
 
         &__entry {
