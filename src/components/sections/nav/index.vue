@@ -1,5 +1,5 @@
 <template>
-    <div>section-nav</div>
+    <section class="section-aside">section-nav</section>
 </template>
 
 <script>

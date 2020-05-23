@@ -5,6 +5,10 @@ html,body {
     height: 100%;
 }
 
+body {
+    display: flex;
+}
+
 
 #app {
     font-family: $family--default;
@@ -12,12 +16,18 @@ html,body {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: $color--text;
+    width: 100%;
+    display: flex;
 }
 
 button {
     outline: none;
     -webkit-tap-highlight-color: transparent;
     padding: 0;
+}
+
+input {
+    outline: none;
 }
 
 .wrap {
