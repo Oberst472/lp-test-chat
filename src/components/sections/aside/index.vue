@@ -4,29 +4,32 @@
             <div class="section-aside__stat">Диалоги <span class="section-aside__stat-count">154</span></div>
             <div class="section-aside__items">
                 <VueScroll>
-                    <BlockNavShortItem v-for="item in 18" :key="item" :to="{name: 'dialog', params: {id: 'lol'} }"/>
+                    <BlockAsideShortItem v-for="item in 18" :key="item" :to="{name: 'dialog', params: {id: 'lol'} }"/>
                 </VueScroll>
             </div>
-            <div class="section-aside__add-chat">Добавить новый чат</div>
+            <div class="section-aside__add-chat">
+                <UiBtn theme="info">Создать новый диалог</UiBtn>
+            </div>
         </div>
     </section>
 </template>
 
 <script>
     import VueScroll from 'vuescroll';
-    import BlockNavShortItem from '@/components/blocks/navShortItem'
+    import BlockAsideShortItem from '@/components/blocks/asideShortItem'
 
     export default {
         components: {
             VueScroll,
-            BlockNavShortItem
+            BlockAsideShortItem
         }
     }
 </script>
 
 <style lang="scss" scoped>
     .section-aside {
-        &__content {}
+        &__content {
+        }
 
         &__stat {
             height: 60px;
@@ -52,10 +55,9 @@
         }
 
         &__add-chat {
-            background-color: $color--positive;
+            display: flex;
             height: 60px;
             box-sizing: border-box;
-            padding: 22px 20px;
         }
     }
 </style>

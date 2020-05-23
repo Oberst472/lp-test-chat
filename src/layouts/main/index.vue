@@ -2,7 +2,7 @@
     <section class="layout-main">
         <div class="layout-main__content">
             <aside class="layout-main__aside">
-                <router-view name="nav" class="layout-main__aside-content"/>
+                <router-view name="aside" class="layout-main__aside-content"/>
             </aside>
             <main class="layout-main__body">
                 <router-view class="layout-main__body-content"/>

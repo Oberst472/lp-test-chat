@@ -14,7 +14,7 @@ export default new VueRouter({
                     path: '/',
                     name: 'main',
                     components: {
-                        nav: require('./components/sections/nav').default,
+                        aside: require('./components/sections/aside').default,
                         default: require('./pages/main').default
                     },
                     meta: {
@@ -25,7 +25,7 @@ export default new VueRouter({
                     path: `/dialog/:id`,
                     name: 'dialog',
                     components: {
-                        nav: require('./components/sections/nav').default,
+                        aside: require('./components/sections/aside').default,
                         default: require('./pages/dialog').default
                     },
                     meta: {
