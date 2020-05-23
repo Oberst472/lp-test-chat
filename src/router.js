@@ -22,8 +22,8 @@ export default new VueRouter({
                     }
                 },
                 {
-                    path: `/chatroom/:id`,
-                    name: 'chatroom',
+                    path: `/dialog/:id`,
+                    name: 'dialog',
                     components: {
                         nav: require('./components/sections/nav').default,
                         default: require('./pages/chatroom').default

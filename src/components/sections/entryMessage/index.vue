@@ -1,6 +1,6 @@
 <template>
     <div>
-        chatroom
+        entry
     </div>
 </template>
 
@@ -8,6 +8,6 @@
     export default {}
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="">
 
 </style>

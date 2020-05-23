@@ -4,7 +4,7 @@
             <div class="section-aside__stat">Диалоги <span class="section-aside__stat-count">154</span></div>
             <div class="section-aside__items">
                 <VueScroll>
-                    <BlockNavShortItem v-for="item in 3" :key="item"/>
+                    <BlockNavShortItem v-for="item in 18" :key="item" :to="{name: 'dialog', params: {id: 'lol'} }"/>
                 </VueScroll>
             </div>
             <div class="section-aside__add-chat">Добавить новый чат</div>

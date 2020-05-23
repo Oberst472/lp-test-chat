@@ -65,6 +65,8 @@
         border-bottom: 1px solid #E9EDF2;
         padding: 22px 20px;
         box-sizing: border-box;
+        text-decoration: none;
+        display: block;
 
         &__content {
             text-align: left;
