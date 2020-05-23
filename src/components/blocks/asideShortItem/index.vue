@@ -8,15 +8,17 @@
     >
         <div class="block-short__content">
             <div class="block-short__info">
-                <div class="block-short__info-theme">{{ title | croppedTitle }}</div>
-                <div class="block-short__info-date">12 мая 2023</div>
+                <div class="block-short__info-theme">{{ info.subject | croppedTitle }}</div>
+                <div class="block-short__info-date">{{ info.created | formatDate }}</div>
             </div>
-            <div class="block-short__text">{{ text | croppedMessage }}</div>
+            <div class="block-short__text" v-if="info.parts[0]">{{ info.parts[0].text | croppedMessage }}</div>
+            <div class="block-short__text" v-else>Нет сообщений</div>
         </div>
     </component>
 </template>
 
 <script>
+    import {convertDate} from '@/utils/formatDate'
     export default {
         filters: {
             croppedTitle(value) {
@@ -24,6 +26,9 @@
             },
             croppedMessage(value) {
                 return value.length > 80 ? value.substring(0, 80) + ' ...' : value
+            },
+            formatDate(val) {
+                return convertDate(val)
             }
         },
         props: {
@@ -35,13 +40,9 @@
                 type: String,
                 default: ''
             },
-            title: {
-                type: String,
-                default: 'Lorem ipsum dolor sit amet, consecte'
-            },
-            text: {
-                type: String,
-                default: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid asperiores assumenda corporis error omnis perspiciatis quas ratione sit veniam.'
+            info: {
+                type: Object,
+                default: null
             }
         },
         computed: {

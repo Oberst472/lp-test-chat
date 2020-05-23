@@ -37,3 +37,10 @@ input {
 .__bar-is-vertical {
     background-color: rgba($color--primary, 0.5) !important;
 }
+.fadeLoading-enter-active, .fadeLoading-leave-active {
+    transition: opacity 0s;
+}
+.fadeLoading-enter, .fadeLoading-leave-to {
+    opacity: 0;
+    transition: opacity 0.5s;
+}

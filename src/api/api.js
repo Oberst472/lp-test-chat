@@ -12,9 +12,26 @@ export const apiAllTodo = async function() {
     return data
 }
 
-export const apiCreateTodo = async function(info) {
+// eslint-disable-next-line no-unused-vars
+export const apiCreateNewDialog = async function(subject) {
     await timeout(1000)
-    const [data] = await Promise.all([customFetch('post', `${baseUrl}/api/create/`, info)])
+    const [data] = await Promise.all([customFetch('post', `${baseUrl}/api/create-dialog/`, subject)])
+    return data
+}
+export const apiGetDialogById = async function(id) {
+    await timeout(1000)
+    const [data] = await Promise.all([customFetch('get', `${baseUrl}/api/${id}/`)])
+    return data
+}
+export const apiGetAll = async function() {
+    await timeout(1000)
+    const [data] = await Promise.all([customFetch('get', `${baseUrl}/api/all/`)])
+    return data
+}
+export const apiSendMessage = async function(info) {
+    console.log(info)
+    await timeout(1000)
+    const [data] = await Promise.all([customFetch('post', `${baseUrl}/api/create-message/`, info)])
     return data
 }
 

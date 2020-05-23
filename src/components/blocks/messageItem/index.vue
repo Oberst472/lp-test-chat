@@ -14,7 +14,14 @@
 </template>
 
 <script>
-    export default {}
+    export default {
+        props: {
+            info: {
+                type: Object,
+                default: null
+            }
+        }
+    }
 </script>
 
 <style scoped lang="scss">

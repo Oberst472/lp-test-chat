@@ -18,7 +18,7 @@
         props: {
             theme: {
                 type: String,
-                default: 'primary'
+                default: 'positive'
             },
             size: {
                 type: String,
@@ -149,12 +149,12 @@
         }
 
         &--theme {
-            &-info {
+            &-primary {
                 color: #ffffff;
-                background-color: $color--info;
+                background-color: $color--primary;
 
                 &:hover {
-                    background-color: lighten($color--info, 10%);
+                    background-color: lighten($color--primary, 10%);
                 }
             }
 

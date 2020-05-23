@@ -22,6 +22,17 @@ export default new VueRouter({
                     }
                 },
                 {
+                    path: '/create',
+                    name: 'create',
+                    components: {
+                        aside: require('./components/sections/aside').default,
+                        default: require('./pages/create').default
+                    },
+                    meta: {
+                        title: `Создать диалог`
+                    }
+                },
+                {
                     path: `/dialog/:id`,
                     name: 'dialog',
                     components: {

@@ -1,8 +1,8 @@
 <template>
     <section class="section-messages">
         <VueScroll>
-            <BlockMessageItem class="block-message--right"/>
-            <BlockMessageItem class="block-message--left"/>
+            <BlockMessageItem class="section-messages__item block-message--right" v-for="item in messages" :key="item.id"/>
+            <span class="section-messages__mock-text" v-if="!messages.length">В этом диалоге еще нет сообщений :(</span>
         </VueScroll>
     </section>
 </template>
@@ -15,6 +15,17 @@
         components: {
             BlockMessageItem,
             VueScroll
+        },
+        props: {
+            info: {
+                type: Array,
+                default: () => {}
+            }
+        },
+        computed: {
+            messages() {
+                return this.info.length ? this.info : []
+            }
         }
     }
 </script>
@@ -34,7 +45,15 @@
             padding: 0 20px 40px 40px !important;
             box-sizing: border-box !important;
             flex-direction: column !important;
-            justify-content: flex-end;
+        }
+        &__item {
+            &:first-of-type {
+                margin-top: auto;
+            }
+        }
+        &__mock-text {
+            margin-top: auto;
+            margin-bottom: auto;
         }
     }
 </style>

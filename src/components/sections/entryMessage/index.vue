@@ -1,12 +1,18 @@
 <template>
     <div class="block-entry-message" :class="classes">
-        <div class="block-entry-message__inp" contenteditable="true" @input="sav"></div>
-        <UiBtnSend class="block-entry-message__btn" :disabled="!value.length"/>
+        <div class="block-entry-message__inp" contenteditable="true" @input="oninput"></div>
+        <UiBtnSend class="block-entry-message__btn" :disabled="!value.length" :loading="loading" @click="$emit('send', value)"/>
     </div>
 </template>
 
 <script>
     export default {
+        props: {
+            loading: {
+                type: Boolean,
+                default: false
+            }
+        },
         data() {
             return {
                 value: ''
@@ -20,7 +26,7 @@
             }
         },
         methods: {
-            sav(e) {
+            oninput(e) {
                 this.value = e.target.textContent
             }
         }
