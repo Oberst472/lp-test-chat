@@ -33,3 +33,7 @@ input {
 .wrap {
     @include container
 }
+
+.__bar-is-vertical {
+    background-color: $color--primary !important;
+}
