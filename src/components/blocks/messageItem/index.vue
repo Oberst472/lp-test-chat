@@ -6,14 +6,21 @@
             </p>
             <div class="block-message__info">
                 <span class="block-message__info-author">{{ info.author }}</span>
-                <span class="block-message__info-date">{{ info.created }}</span>
+                <span class="block-message__info-date">{{ info.created | convertDate }}</span>
             </div>
         </div>
     </article>
 </template>
 
 <script>
+    import {convertDateTime} from '@/utils/formatDate';
+
     export default {
+        filters: {
+            convertDate(val) {
+                return convertDateTime(val)
+            }
+        },
         props: {
             info: {
                 type: Object,

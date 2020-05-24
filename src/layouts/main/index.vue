@@ -11,12 +11,13 @@
             </main>
         </div>
         <transition name="translate">
-            <SectionForm class="layout-main__popup-form" v-if="isFormActive" placeholder="Введите свое имя" @submit="createUser">Сохранить</SectionForm>
+            <SectionForm class="layout-main__popup-form" v-if="!isUserAuthorized" placeholder="Введите свое имя" @submit="createUser">Сохранить</SectionForm>
         </transition>
     </section>
 </template>
 
 <script>
+    import {mapState, mapActions} from 'vuex'
     import SectionForm from '@/components/sections/form';
 export default {
     components: {
@@ -27,14 +28,18 @@ export default {
             isFormActive: false
         }
     },
+    computed: {
+        ...mapState(['isUserAuthorized'])
+    },
     methods: {
+        ...mapActions(['checkAuthorization']),
       createUser(val) {
           localStorage.setItem('name', val)
-          this.isFormActive = false
+          this.checkAuthorization()
       }
     },
     mounted() {
-        !localStorage.getItem('name') ? this.isFormActive = true : false
+        this.checkAuthorization()
     }
 }
 </script>

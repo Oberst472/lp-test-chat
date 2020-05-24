@@ -10,6 +10,7 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex'
     import VueScroll from 'vuescroll';
     export default {
         components: {
@@ -27,10 +28,11 @@
             }
         },
         computed: {
+            ...mapState(['isUserAuthorized']),
             classes() {
                 return {
                     'block-entry-message--active': this.value.length,
-                    'block-entry-message--disabled': this.loading
+                    'block-entry-message--disabled': this.loading || !this.isUserAuthorized
                 }
             }
         },

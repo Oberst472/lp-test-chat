@@ -1,10 +1,10 @@
 <template>
     <section class="section-messages">
-        <VueScroll>
-            <transition-group appear name="list" tag="div" class="section-messages__items">
+        <VueScroll @handle-resize="handleResize" ref="vuescroll">
+            <transition-group appear name="list" tag="div" class="section-messages__items" v-if="info.length">
                 <BlockMessageItem class="section-messages__item" :class="messageClass(item.author)" v-for="item in info" :key="item.id" :info="info.length ? item : null"/>
             </transition-group>
-            <span class="section-messages__mock-text" v-if="!info.length">В этом диалоге еще нет сообщений :(</span>
+            <span class="section-messages__mock-text" v-if="!info.length">Сообщений нет :(</span>
         </VueScroll>
     </section>
 </template>
@@ -21,8 +21,7 @@
         props: {
             info: {
                 type: Array,
-                default: () => {
-                }
+                default: () => {}
             }
         },
         data() {
@@ -34,6 +33,10 @@
         methods: {
             messageClass(author) {
                 return this.name === author ? 'block-message--right' : 'block-message--left'
+            },
+            handleResize() {
+                console.log('lol')
+                this.$refs.vuescroll.scrollTo({y: '100%'}, 500)
             }
         }
     }
@@ -71,6 +74,7 @@
         }
 
         &__mock-text {
+            width: 100%;
             margin-top: auto;
             margin-bottom: auto;
         }
