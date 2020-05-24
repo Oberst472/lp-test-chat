@@ -8,7 +8,7 @@
                 </VueScroll>
             </div>
             <div class="section-aside__add-chat">
-                <UiBtn theme="primary" :to="{name: 'create'}">Создать новый диалог</UiBtn>
+                <UiBtn class="section-aside__add-chat-btn" theme="primary" :to="{name: 'create'}">Создать новый диалог</UiBtn>
             </div>
         </div>
         <transition name="fadeLoading">
@@ -84,6 +84,10 @@
             display: flex;
             height: 60px;
             box-sizing: border-box;
+            &-btn.router-link-active {
+                pointer-events: none;
+                opacity: 0.6;
+            }
         }
         &__loading {
             background-color: $color--bg-nav;
@@ -96,12 +100,12 @@
                     left: 0;
                 }
             }
-        }
-        .router-link-active {
-            pointer-events: none;
-            background-color: #fff;
-            &:before {
-                left: 0;
+            &.router-link-active {
+                pointer-events: none;
+                background-color: #fff;
+                &:before {
+                    left: 0;
+                }
             }
         }
     }

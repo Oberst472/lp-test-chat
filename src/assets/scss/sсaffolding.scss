@@ -44,3 +44,10 @@ input {
     opacity: 0;
     transition: opacity 0.5s;
 }
+
+.layout-fade-enter-active, .layout-fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+.layout-fade-enter, .layout-fade-leave-to {
+    opacity: 0;
+}

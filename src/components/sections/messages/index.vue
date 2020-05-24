@@ -1,7 +1,9 @@
 <template>
     <section class="section-messages">
         <VueScroll>
-            <BlockMessageItem class="section-messages__item" :class="messageClass(item.author)" v-for="item in info" :key="item.id" :info="info.length ? item : null"/>
+            <transition-group appear name="list" tag="div" class="section-messages__items">
+                <BlockMessageItem class="section-messages__item" :class="messageClass(item.author)" v-for="item in info" :key="item.id" :info="info.length ? item : null"/>
+            </transition-group>
             <span class="section-messages__mock-text" v-if="!info.length">В этом диалоге еще нет сообщений :(</span>
         </VueScroll>
     </section>
@@ -19,11 +21,13 @@
         props: {
             info: {
                 type: Array,
-                default: () => {}
+                default: () => {
+                }
             }
         },
         data() {
             return {
+                lol: 1,
                 name: localStorage.getItem('name')
             }
         },
@@ -47,18 +51,45 @@
 
         /deep/ .__view {
             display: flex;
+            width: 100%;
+        }
+
+        &__items {
+            width: 100%;
+            display: flex;
             padding: 0 20px 40px 40px !important;
             box-sizing: border-box !important;
             flex-direction: column !important;
         }
+
         &__item {
+            transition: all 1s;
+
             &:first-of-type {
                 margin-top: auto;
             }
         }
+
         &__mock-text {
             margin-top: auto;
             margin-bottom: auto;
         }
+    }
+
+    .list-item {
+        transition: all 1s;
+        display: block;
+        margin-right: 10px;
+    }
+
+    .list-enter, .list-leave-to
+        /* .list-complete-leave-active до версии 2.1.8 */
+    {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    .list-leave-active {
+        position: absolute;
     }
 </style>

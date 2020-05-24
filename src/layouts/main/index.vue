@@ -5,7 +5,9 @@
                 <router-view name="aside" class="layout-main__aside-content"/>
             </aside>
             <main class="layout-main__body">
-                <router-view class="layout-main__body-content"/>
+                <transition name="layout-fade" mode="out-in" appear>
+                    <router-view class="layout-main__body-content"/>
+                </transition>
             </main>
         </div>
         <transition name="translate">

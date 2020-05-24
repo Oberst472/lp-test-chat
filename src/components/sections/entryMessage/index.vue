@@ -1,12 +1,20 @@
 <template>
     <div class="block-entry-message" :class="classes">
-        <div class="block-entry-message__inp" contenteditable="true" @input="oninput" ref="textInp"></div>
+        <div class="block-entry-message__scroll-box">
+            <VueScroll>
+                <div class="block-entry-message__inp" contenteditable="true" @input="oninput" ref="textInp"></div>
+            </VueScroll>
+        </div>
         <UiBtnSend class="block-entry-message__btn" :disabled="!value.length" :loading="loading" @click="$emit('send', value)"/>
     </div>
 </template>
 
 <script>
+    import VueScroll from 'vuescroll';
     export default {
+        components: {
+            VueScroll
+        },
         props: {
             loading: {
                 type: Boolean,
@@ -21,7 +29,8 @@
         computed: {
             classes() {
                 return {
-                    'block-entry-message--active': this.value.length
+                    'block-entry-message--active': this.value.length,
+                    'block-entry-message--disabled': this.loading
                 }
             }
         },
@@ -46,9 +55,20 @@
         width: 100%;
         overflow: hidden;
         display: flex;
+        height: inherit;
+        &__scroll-box {
+            border-top: 1px solid #E9EDF2;
+            width: 100%;
+            height: 80px;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        /deep/ .__view {
+            display: flex;
+            width: 100%;
+        }
 
         &__inp {
-            border-top: 1px solid #E9EDF2;
             flex-shrink: 0;
             padding: 30px;
             text-align: left;
@@ -84,6 +104,10 @@
             .block-entry-message__inp:before {
                 display: none !important;
             }
+        }
+        &--disabled {
+            opacity: 0.6;
+            pointer-events: none;
         }
 
         &__btn {

@@ -77,6 +77,10 @@
 
         &__entry {
             min-height: 70px;
+            overflow: hidden;
+            position: sticky;
+            bottom: 0;
+            right: 0;
         }
         &__loading {
             background-color: #fff;
