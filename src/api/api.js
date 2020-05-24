@@ -26,7 +26,6 @@ export const apiGetAll = async function() {
 }
 //отправить сообщение
 export const apiSendMessage = async function(info) {
-    console.log(info)
     await timeout(1000)
     const [data] = await Promise.all([customFetch('post', `${baseUrl}/api/create-message/`, info)])
     return data

@@ -56,7 +56,6 @@ app.get('/api/all', async (req, res) => {
     }
 })
 app.get('/api/:id', async (req, res) => {
-    console.log(req.params.id)
     try {
         const id = req.params.id
         const response = await readFile(filePath)
@@ -121,7 +120,6 @@ app.post('/api/create-message', async (req, res) => {
         message.id = id
         message.created = date.getTime()
         const itemId = response.findIndex(item => item.id === req.body[0])
-        console.log(req.body)
         response[itemId].parts.push(message)
         const updated = await updateFile(filePath, response)
         updated ?

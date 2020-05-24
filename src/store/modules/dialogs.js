@@ -61,7 +61,7 @@ export default {
                 return false
             }
         },
-        async stSendMessage({commit}, info) {
+        async stSendMessage({commit, dispatch}, info) {
             const message = [
                 info.dialogId,
                 {
@@ -75,6 +75,7 @@ export default {
                 const data = await apiSendMessage(message)
                 if (data) {
                     commit('setNewMessage', data.data)
+                    dispatch('getAll')
                 }
                 return data ? data : false
             } catch (e) {
