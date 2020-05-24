@@ -1,8 +1,8 @@
 <template>
     <section class="section-messages">
         <VueScroll>
-            <BlockMessageItem class="section-messages__item block-message--right" v-for="item in messages" :key="item.id"/>
-            <span class="section-messages__mock-text" v-if="!messages.length">В этом диалоге еще нет сообщений :(</span>
+            <BlockMessageItem class="section-messages__item" :class="messageClass(item.author)" v-for="item in info" :key="item.id" :info="info.length ? item : null"/>
+            <span class="section-messages__mock-text" v-if="!info.length">В этом диалоге еще нет сообщений :(</span>
         </VueScroll>
     </section>
 </template>
@@ -22,9 +22,14 @@
                 default: () => {}
             }
         },
-        computed: {
-            messages() {
-                return this.info.length ? this.info : []
+        data() {
+            return {
+                name: localStorage.getItem('name')
+            }
+        },
+        methods: {
+            messageClass(author) {
+                return this.name === author ? 'block-message--right' : 'block-message--left'
             }
         }
     }

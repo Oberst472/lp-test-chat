@@ -55,6 +55,8 @@ export default {
             box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
             flex-grow: 1;
             display: flex;
+            position: relative;
+            z-index: 2;
         }
         &__popup-form {
             position: fixed;

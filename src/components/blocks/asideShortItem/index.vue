@@ -63,11 +63,36 @@
     .block-short {
         background-color: transparent;
         border: 0;
-        border-bottom: 1px solid #E9EDF2;
         padding: 22px 20px;
         box-sizing: border-box;
         text-decoration: none;
         display: block;
+        position: relative;
+        overflow: hidden;
+        transition: background-color 0.3s ease;
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #E9EDF2;
+
+        }
+
+        &:before {
+            transition-duration: 0.3s;
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            display: block;
+            background-color: $color--primary;
+
+        }
 
         &__content {
             text-align: left;

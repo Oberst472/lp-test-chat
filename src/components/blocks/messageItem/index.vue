@@ -2,12 +2,11 @@
     <article class="block-message">
         <div class="block-message__content">
             <p class="block-message__text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo,
-                voluptatum.
+                {{ info.text }}
             </p>
             <div class="block-message__info">
-                <span class="block-message__info-author">Вася Пупкин</span>
-                <span class="block-message__info-date">15.12.2018 13:29</span>
+                <span class="block-message__info-author">{{ info.author }}</span>
+                <span class="block-message__info-date">{{ info.created }}</span>
             </div>
         </div>
     </article>
@@ -32,6 +31,7 @@
         margin-top: 20px;
 
         &__content {
+            width: 100%;
         }
 
         &__text {

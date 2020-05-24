@@ -40,12 +40,20 @@
               const response = await this.stSendMessage({dialogId: this.$route.params.id, info: val})
                 this.isBtnLoading = false
                 console.log(response)
+            },
+            async downloadDialog(id) {
+                this.isPageLoading = true
+                await this.getDialogById(id)
+                this.isPageLoading = false
+                return true
             }
         },
         async mounted() {
-            this.isPageLoading = true
-            await this.getDialogById(this.$route.params.id)
-            this.isPageLoading = false
+            await this.downloadDialog(this.$route.params.id)
+        },
+        async beforeRouteUpdate(to, from, next) {
+            await this.downloadDialog(to.params.id)
+            next()
         }
     }
 </script>

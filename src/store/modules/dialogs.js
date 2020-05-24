@@ -18,6 +18,13 @@ export default {
         },
         setNewMessage(state, message) {
             state.messages.push(message)
+        },
+        setAllMessages(state, messages) {
+            state.messages = messages
+            console.log(state.messages)
+        },
+        resetMessages(state) {
+            state.messages = []
         }
     },
     getters: {
@@ -45,11 +52,12 @@ export default {
             }
         },
         //получить диалог по id
-        async getDialogById({commit}, id) {
+        async getDialogById({commit, dispatch}, id) {
+            dispatch('resetMessages')
             try {
                 const data = await apiGetDialogById(id)
                 commit('setDialogInfo', data.data)
-                commit('setNewMessage', data.data.parts)
+                commit('setAllMessages', data.data.parts)
                 return !!data
             } catch (e) {
                 console.error(e)
@@ -81,7 +89,7 @@ export default {
             }
 
         },
-        getAll: async function({commit}) {
+        async getAll({commit}) {
             try {
                 const data = await apiGetAll()
                 commit('setAll', data.data)
@@ -90,6 +98,9 @@ export default {
                 console.error(e)
                 return false
             }
+        },
+        resetMessages({commit}) {
+            commit('resetMessages')
         }
     }
 }

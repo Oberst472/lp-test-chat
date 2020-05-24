@@ -4,7 +4,7 @@
             <div class="section-aside__stat">Диалоги <span class="section-aside__stat-count">{{ dialogsLength }}</span></div>
             <div class="section-aside__items">
                 <VueScroll>
-                    <BlockAsideShortItem v-for="item in getAllDialogs" :key="item.id" :info="item" :to="{name: 'dialog', params: {id: item.id} }"/>
+                    <BlockAsideShortItem class="section-aside__item" v-for="item in getAllDialogs" :key="item.id" :info="item" :to="{name: 'dialog', params: {id: item.id} }"/>
                 </VueScroll>
             </div>
             <div class="section-aside__add-chat">
@@ -88,6 +88,21 @@
         &__loading {
             background-color: $color--bg-nav;
             z-index: 10;
+        }
+        &__item {
+            &:hover {
+                background-color: #fff;
+                &:before {
+                    left: 0;
+                }
+            }
+        }
+        .router-link-active {
+            pointer-events: none;
+            background-color: #fff;
+            &:before {
+                left: 0;
+            }
         }
     }
 </style>
