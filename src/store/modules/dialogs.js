@@ -1,4 +1,4 @@
-import { apiCreateNewDialog, apiGetDialogById, apiGetAll, apiSendMessage } from '@/api/api'
+import {apiCreateNewDialog, apiGetAll, apiGetDialogById, apiSendMessage} from '@/api/api'
 
 export default {
     namespaced: true,
@@ -21,7 +21,6 @@ export default {
         },
         setAllMessages(state, messages) {
             state.messages = messages
-            console.log(state.messages)
         },
         resetMessages(state) {
             state.messages = []
@@ -35,7 +34,6 @@ export default {
         }
     },
     actions: {
-        //создать новый диалог
         async stCreateNewDialog(context, value) {
             const dialog = {
                 id: '',
@@ -51,7 +49,6 @@ export default {
                 return false
             }
         },
-        //получить диалог по id
         async getDialogById({commit, dispatch}, id) {
             dispatch('resetMessages')
             try {
@@ -64,7 +61,6 @@ export default {
                 return false
             }
         },
-
         async stSendMessage({commit}, info) {
             const message = [
                 info.dialogId,
@@ -76,9 +72,7 @@ export default {
                 }
             ]
             try {
-                console.log(message)
                 const data = await apiSendMessage(message)
-                console.log(data)
                 if (data) {
                     commit('setNewMessage', data.data)
                 }

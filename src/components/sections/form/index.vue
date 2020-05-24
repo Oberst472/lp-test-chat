@@ -1,8 +1,8 @@
 <template>
     <div class="section-create-dialog">
-        <form class="section-create-dialog__form" @submit.prevent="send">
-            <input class="section-create-dialog__inp" type="text" :placeholder="placeholder" v-model.trim="value">
-            <UiBtn class="section-create-dialog__btn" theme="primary" size="medium" :disabled="!value.length" :loading="loading">
+        <form @submit.prevent="send" class="section-create-dialog__form">
+            <input :placeholder="placeholder" class="section-create-dialog__inp" type="text" v-model.trim="value">
+            <UiBtn :disabled="!value.length" :loading="loading" class="section-create-dialog__btn" size="medium" theme="primary">
                 <slot>Создать</slot>
             </UiBtn>
         </form>
@@ -36,26 +36,26 @@
     }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
     .section-create-dialog {
         display: flex;
-        width: 100%;
         justify-content: center;
+        width: 100%;
 
         &__form {
-            border-radius: 5px;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-            padding: $gutter;
             width: 100%;
             max-width: 400px;
+            padding: $gutter;
+            border-radius: 5px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
         }
 
         &__inp {
-            margin-bottom: $gutter;
+            box-sizing: border-box;
             display: block;
             width: 100%;
+            margin-bottom: $gutter;
             padding: $gutter / 2 0 $gutter / 3 0;
-            box-sizing: border-box;
             border: 0;
             border-bottom: 1px solid rgba($color--text-light, 0.4);
 

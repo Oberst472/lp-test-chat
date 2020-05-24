@@ -5,7 +5,7 @@
                 <SectionMessages :info="messages"/>
             </div>
             <div class="page-dialog__entry">
-                <SectionEntryMessage placeholder="Введите текст" @send="sendMessage" :loading="isBtnLoading"/>
+                <SectionEntryMessage :loading="isBtnLoading" @send="sendMessage" placeholder="Введите текст"/>
             </div>
         </div>
         <transition name="fadeLoading">
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import {mapState, mapActions} from 'vuex';
+    import {mapActions, mapState} from 'vuex';
     import SectionMessages from '@/components/sections/messages';
     import SectionEntryMessage from '@/components/sections/entryMessage';
 
@@ -34,12 +34,11 @@
             ...mapState('dialogs', ['messages'])
         },
         methods: {
-          ...mapActions('dialogs', ['getDialogById', 'stSendMessage']),
+            ...mapActions('dialogs', ['getDialogById', 'stSendMessage']),
             async sendMessage(val) {
                 this.isBtnLoading = true
-              const response = await this.stSendMessage({dialogId: this.$route.params.id, info: val})
+                await this.stSendMessage({dialogId: this.$route.params.id, info: val})
                 this.isBtnLoading = false
-                console.log(response)
             },
             async downloadDialog(id) {
                 this.isPageLoading = true
@@ -58,30 +57,31 @@
     }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
     .page-dialog {
-        width: 100%;
-        display: flex;
         position: relative;
+        display: flex;
+        width: 100%;
 
         &__content {
-            width: 100%;
             display: flex;
             flex-direction: column;
+            width: 100%;
         }
 
         &__messages {
-            flex-grow: 1;
             display: flex;
+            flex-grow: 1;
         }
 
         &__entry {
+            position: sticky;
+            right: 0;
+            bottom: 0;
             min-height: 70px;
             overflow: hidden;
-            position: sticky;
-            bottom: 0;
-            right: 0;
         }
+
         &__loading {
             background-color: #fff;
         }

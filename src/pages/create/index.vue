@@ -1,7 +1,7 @@
 <template>
     <div class="page-create">
         <div class="page-create__content">
-            <SectionCreateDialogForm @submit="create" :loading="isLoading"/>
+            <SectionCreateDialogForm :loading="isLoading" @submit="create"/>
         </div>
     </div>
 </template>
@@ -9,6 +9,7 @@
 <script>
     import SectionCreateDialogForm from '@/components/sections/form';
     import {mapActions} from 'vuex';
+
     export default {
         components: {
             SectionCreateDialogForm
@@ -24,10 +25,9 @@
                 this.isLoading = true
                 const response = await this.stCreateNewDialog(value)
                 if (response) {
-                    this.$router.push({name: 'dialog', params: {id: response.dialogId}})
                     this.getAll()
-                }
-                else {
+                    this.$router.push({name: 'dialog', params: {id: response.dialogId}})
+                } else {
                     this.isLoading = false
                 }
             }
@@ -35,16 +35,17 @@
     }
 </script>
 
-<style scoped lang="scss">
-.page-create {
-    display: flex;
-    width: 100%;
-    &__content {
+<style lang="scss" scoped>
+    .page-create {
         display: flex;
         width: 100%;
-        justify-content: center;
-        align-self: center;
-    }
 
-}
+        &__content {
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            width: 100%;
+        }
+
+    }
 </style>

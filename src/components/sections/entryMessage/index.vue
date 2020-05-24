@@ -5,13 +5,19 @@
                 <div class="block-entry-message__inp" contenteditable="true" @input="oninput" ref="textInp"></div>
             </VueScroll>
         </div>
-        <UiBtnSend class="block-entry-message__btn" :disabled="!value.length" :loading="loading" @click="$emit('send', value)"/>
+        <UiBtnSend
+            :disabled="!value.length"
+            :loading="loading"
+            @click="$emit('send', value)"
+            class="block-entry-message__btn"
+        />
     </div>
 </template>
 
 <script>
     import {mapState} from 'vuex'
     import VueScroll from 'vuescroll';
+
     export default {
         components: {
             VueScroll
@@ -44,8 +50,8 @@
         watch: {
             loading(val) {
                 if (!val) {
-                   this.value = ''
-                       this.$refs.textInp.textContent = ''
+                    this.value = ''
+                    this.$refs.textInp.textContent = ''
                 }
             }
         }
@@ -54,10 +60,11 @@
 
 <style scoped lang="scss">
     .block-entry-message {
-        width: 100%;
-        overflow: hidden;
         display: flex;
+        width: 100%;
         height: inherit;
+        overflow: hidden;
+
         &__scroll-box {
             border-top: 1px solid #E9EDF2;
             width: 100%;
@@ -65,6 +72,7 @@
             overflow: hidden;
             box-sizing: border-box;
         }
+
         /deep/ .__view {
             display: flex;
             width: 100%;
@@ -107,6 +115,7 @@
                 display: none !important;
             }
         }
+
         &--disabled {
             opacity: 0.6;
             pointer-events: none;

@@ -63,12 +63,12 @@
     }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
     .ui-btn {
         position: relative;
         z-index: 2;
-        display: inline-flex;
         box-sizing: border-box;
+        display: inline-flex;
         justify-content: center;
         align-items: center;
         font-size: inherit;
@@ -90,32 +90,32 @@
         &__loading {
             position: absolute;
             display: flex;
-            pointer-events: none;
             width: 30px;
             height: 30px;
+            pointer-events: none;
 
             span {
-                display: flex;
-                width: 100%;
-                height: 100%;
+                position: relative;
                 box-sizing: border-box;
+                display: flex;
                 justify-content: center;
                 align-items: center;
+                width: 100%;
+                height: 100%;
                 border: 2px solid transparent;
                 border-top-color: currentColor;
                 border-bottom-color: currentColor;
                 border-radius: 50%;
-                position: relative;
                 animation: spin 1.5s linear infinite;
 
                 &:before {
                     content: '';
                     display: block;
-                    border-radius: 50%;
-                    animation: pulse 1s alternate ease-in-out infinite;
                     width: 4px;
                     height: 4px;
                     border: 2px solid currentColor;
+                    border-radius: 50%;
+                    animation: pulse 1s alternate ease-in-out infinite;
                 }
             }
         }
@@ -123,24 +123,24 @@
         &--size {
             &-default {
                 width: 100%;
-                font-size: 14px;
                 padding: $gutter / 3 $gutter / 2;
+                font-size: 14px;
             }
 
             &-medium {
                 width: auto;
                 min-width: 100px;
                 min-height: 40px;
-                font-size: 14px;
                 padding: $gutter / 3 $gutter / 2;
+                font-size: 14px;
             }
 
             &-small {
                 width: auto;
                 min-width: 80px;
                 min-height: 35px;
-                font-size: 12px;
                 padding: $gutter / 3 $gutter / 2;
+                font-size: 12px;
 
                 .ui-btn__loading {
                     transform: scale(0.7);

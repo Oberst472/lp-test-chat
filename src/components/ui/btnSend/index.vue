@@ -1,7 +1,7 @@
 <template>
-    <component :is="tag" class="ui-btn-send" :class="classes" @click="$emit('click')" title="Отправить">
+    <component :class="classes" :is="tag" @click="$emit('click')" class="ui-btn-send" title="Отправить">
         <span class="ui-btn-send__content">
-            <component class="ui-btn-send__icon" :is="`icon-${iconName}`" v-if="!loading"></component>
+            <component :is="`icon-${iconName}`" class="ui-btn-send__icon" v-if="!loading"></component>
             <span class="ui-btn-send__loading" v-else><span></span></span>
         </span>
     </component>
@@ -59,56 +59,57 @@
     }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
     .ui-btn-send {
         border: 0;
         outline: none;
-        text-decoration: none;
         cursor: pointer;
+        text-decoration: none;
 
         &:active {
             opacity: 0.9;
         }
 
         &__content {
-            height: 0;
-            width: 100%;
-            padding-bottom: 100%;
             position: relative;
             display: flex;
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
         }
+
         &__loading {
             position: absolute;
-            display: flex;
-            pointer-events: none;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            display: flex;
             width: 30px;
             height: 30px;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
 
             span {
-                display: flex;
-                width: 100%;
-                height: 100%;
+                position: relative;
                 box-sizing: border-box;
+                display: flex;
                 justify-content: center;
                 align-items: center;
+                width: 100%;
+                height: 100%;
                 border: 2px solid transparent;
                 border-top-color: currentColor;
                 border-bottom-color: currentColor;
                 border-radius: 50%;
-                position: relative;
                 animation: spin 1.5s linear infinite;
 
                 &:before {
                     content: '';
                     display: block;
-                    border-radius: 50%;
-                    animation: pulse 1s alternate ease-in-out infinite;
                     width: 4px;
                     height: 4px;
                     border: 2px solid currentColor;
+                    border-radius: 50%;
+                    animation: pulse 1s alternate ease-in-out infinite;
                 }
             }
         }
@@ -122,8 +123,8 @@
         }
 
         &--theme-primary {
-            background-color: $color--primary;
             color: white;
+            background-color: $color--primary;
             transition: background-color 0.3s ease;
 
             &:hover {
@@ -143,14 +144,16 @@
         }
 
         &--disabled {
-            pointer-events: none;
             opacity: 0.6;
+            pointer-events: none;
         }
+
         &--loading {
-            pointer-events: none;
             opacity: 0.6;
+            pointer-events: none;
         }
     }
+
     @keyframes spin {
         to {
             transform: rotate(360deg);

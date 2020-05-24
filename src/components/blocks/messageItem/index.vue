@@ -75,6 +75,7 @@
 
         &--right {
             align-self: flex-end;
+
             .block-message__text {
                 background-color: $color--bg--message-one;
                 border-bottom-right-radius: 0;
@@ -84,8 +85,10 @@
                 justify-content: flex-end;
             }
         }
+
         &--left {
             align-self: flex-start;
+
             .block-message__text {
                 background-color: $color--bg--message-two;
                 border-bottom-left-radius: 0;

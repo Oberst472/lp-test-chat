@@ -9,63 +9,65 @@
 </script>
 
 <style scoped lang="scss">
-.ui-loading {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &__content {
+    .ui-loading {
         position: absolute;
-        pointer-events: none;
-        width: 60px;
-        height: 60px;
+        top: 0;
+        left: 0;
         display: flex;
         justify-content: center;
         align-items: center;
-        align-self: center;
+        width: 100%;
+        height: 100vh;
 
-        span {
+        &__content {
+            position: absolute;
             display: flex;
-            width: 100%;
-            height: 100%;
-            box-sizing: border-box;
             justify-content: center;
             align-items: center;
-            border: 2px solid transparent;
-            border-top-color: currentColor;
-            border-bottom-color: currentColor;
-            border-radius: 50%;
-            position: relative;
-            animation: spin 1.5s linear infinite;
+            align-self: center;
+            width: 60px;
+            height: 60px;
+            pointer-events: none;
 
-            &:before {
-                content: '';
-                display: block;
+            span {
+                position: relative;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                border: 2px solid transparent;
+                border-top-color: currentColor;
+                border-bottom-color: currentColor;
                 border-radius: 50%;
-                animation: pulse 1s alternate ease-in-out infinite;
-                width: 8px;
-                height: 8px;
-                border: 2px solid currentColor;
+                animation: spin 1.5s linear infinite;
+
+                &:before {
+                    content: '';
+                    display: block;
+                    width: 8px;
+                    height: 8px;
+                    border: 2px solid currentColor;
+                    border-radius: 50%;
+                    animation: pulse 1s alternate ease-in-out infinite;
+                }
             }
         }
     }
-}
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
 
-@keyframes pulse {
-    from {
-        transform: scale(0.5);
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
     }
-    to {
-        transform: scale(1);
+
+    @keyframes pulse {
+        from {
+            transform: scale(0.5);
+        }
+        to {
+            transform: scale(1);
+        }
     }
-}
 </style>

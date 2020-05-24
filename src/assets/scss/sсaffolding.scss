@@ -1,8 +1,8 @@
-html,body {
-    margin: 0;
-    padding: 0;
+html, body {
     width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -11,19 +11,19 @@ body {
 }
 
 #app {
+    display: flex;
+    width: 100%;
     font-family: $family--default;
+    color: $color--text;
+    text-align: center;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: $color--text;
-    width: 100%;
-    display: flex;
 }
 
 button {
+    padding: 0;
     outline: none;
     -webkit-tap-highlight-color: transparent;
-    padding: 0;
 }
 
 input {
@@ -37,9 +37,11 @@ input {
 .__bar-is-vertical {
     background-color: rgba($color--primary, 0.5) !important;
 }
+
 .fadeLoading-enter-active, .fadeLoading-leave-active {
     transition: opacity 0s;
 }
+
 .fadeLoading-enter, .fadeLoading-leave-to {
     opacity: 0;
     transition: opacity 0.5s;
@@ -48,6 +50,7 @@ input {
 .layout-fade-enter-active, .layout-fade-leave-active {
     transition: opacity 0.3s ease;
 }
+
 .layout-fade-enter, .layout-fade-leave-to {
     opacity: 0;
 }

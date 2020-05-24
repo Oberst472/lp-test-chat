@@ -1,14 +1,27 @@
 <template>
     <section class="section-aside">
         <div class="section-aside__content">
-            <div class="section-aside__stat">Диалоги <span class="section-aside__stat-count">{{ dialogsLength }}</span></div>
+            <div class="section-aside__stat">
+                Диалоги <span class="section-aside__stat-count">{{ dialogsLength }}</span>
+            </div>
             <div class="section-aside__items">
                 <VueScroll>
-                    <BlockAsideShortItem class="section-aside__item" v-for="item in getAllDialogs" :key="item.id" :info="item" :to="{name: 'dialog', params: {id: item.id} }"/>
+                    <BlockAsideShortItem
+                        :info="item"
+                        :key="item.id"
+                        :to="{name: 'dialog', params: {id: item.id} }" class="section-aside__item"
+                        v-for="item in getAllDialogs"
+                    />
                 </VueScroll>
             </div>
             <div class="section-aside__add-chat">
-                <UiBtn class="section-aside__add-chat-btn" theme="primary" :to="{name: 'create'}" :disabled="!isUserAuthorized">Создать новый диалог</UiBtn>
+                <UiBtn
+                    :disabled="!isUserAuthorized"
+                    :to="{name: 'create'}" class="section-aside__add-chat-btn"
+                    theme="primary"
+                >
+                    Создать новый диалог
+                </UiBtn>
             </div>
         </div>
         <transition name="fadeLoading">
@@ -18,7 +31,7 @@
 </template>
 
 <script>
-    import {mapState, mapGetters, mapActions} from 'vuex';
+    import {mapActions, mapGetters, mapState} from 'vuex';
     import VueScroll from 'vuescroll';
     import BlockAsideShortItem from '@/components/blocks/asideShortItem'
 
@@ -36,7 +49,6 @@
         computed: {
             ...mapState(['isUserAuthorized']),
             ...mapGetters('dialogs', ['getAllDialogs']),
-          // ...mapState('dialogs', ['allDialogs']),
             dialogsLength() {
                 return this.getAllDialogs.length ? this.getAllDialogs.length : 'Нет'
             }
@@ -55,8 +67,6 @@
 <style lang="scss" scoped>
     .section-aside {
         position: relative;
-        &__content {
-        }
 
         &__stat {
             height: 60px;
@@ -74,7 +84,6 @@
                 font-weight: $weight--bold;
                 margin-left: 10px;
             }
-
         }
 
         &__items {
@@ -82,28 +91,34 @@
         }
 
         &__add-chat {
+            box-sizing: border-box;
             display: flex;
             height: 60px;
-            box-sizing: border-box;
+
             &-btn.router-link-active {
                 pointer-events: none;
                 opacity: 0.6;
             }
         }
+
         &__loading {
             background-color: $color--bg-nav;
             z-index: 10;
         }
+
         &__item {
             &:hover {
                 background-color: #fff;
+
                 &:before {
                     left: 0;
                 }
             }
+
             &.router-link-active {
-                pointer-events: none;
                 background-color: #fff;
+                pointer-events: none;
+
                 &:before {
                     left: 0;
                 }

@@ -2,7 +2,13 @@
     <section class="section-messages">
         <VueScroll @handle-resize="handleResize" ref="vuescroll">
             <transition-group appear name="list" tag="div" class="section-messages__items" v-if="info.length">
-                <BlockMessageItem class="section-messages__item" :class="messageClass(item.author)" v-for="item in info" :key="item.id" :info="info.length ? item : null"/>
+                <BlockMessageItem
+                    :class="messageClass(item.author)"
+                    :info="info.length ? item : null"
+                    :key="item.id"
+                    class="section-messages__item"
+                    v-for="item in info"
+                />
             </transition-group>
             <span class="section-messages__mock-text" v-if="!info.length">Сообщений нет :(</span>
         </VueScroll>
@@ -21,7 +27,8 @@
         props: {
             info: {
                 type: Array,
-                default: () => {}
+                default: () => {
+                }
             }
         },
         data() {
@@ -34,7 +41,6 @@
                 return this.name === author ? 'block-message--right' : 'block-message--left'
             },
             handleResize() {
-                console.log('lol')
                 this.$refs.vuescroll.scrollTo({y: '100%'}, 500)
             }
         }
@@ -85,9 +91,7 @@
         margin-right: 10px;
     }
 
-    .list-enter, .list-leave-to
-        /* .list-complete-leave-active до версии 2.1.8 */
-    {
+    .list-enter, .list-leave-to {
         opacity: 0;
         transform: translateY(30px);
     }

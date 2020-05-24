@@ -19,6 +19,7 @@
 
 <script>
     import {convertDate} from '@/utils/formatDate'
+
     export default {
         filters: {
             croppedTitle(value) {
@@ -61,15 +62,16 @@
 
 <style scoped lang="scss">
     .block-short {
-        background-color: transparent;
-        border: 0;
-        padding: 22px 20px;
-        box-sizing: border-box;
-        text-decoration: none;
-        display: block;
         position: relative;
+        box-sizing: border-box;
+        display: block;
+        padding: 22px 20px;
+        border: 0;
+        background-color: transparent;
         overflow: hidden;
         transition: background-color 0.3s ease;
+        text-decoration: none;
+
         &:after {
             content: '';
             position: absolute;
