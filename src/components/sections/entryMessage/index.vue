@@ -1,6 +1,6 @@
 <template>
     <div class="block-entry-message" :class="classes">
-        <div class="block-entry-message__inp" contenteditable="true" @input="oninput"></div>
+        <div class="block-entry-message__inp" contenteditable="true" @input="oninput" ref="textInp"></div>
         <UiBtnSend class="block-entry-message__btn" :disabled="!value.length" :loading="loading" @click="$emit('send', value)"/>
     </div>
 </template>
@@ -28,6 +28,14 @@
         methods: {
             oninput(e) {
                 this.value = e.target.textContent
+            }
+        },
+        watch: {
+            loading(val) {
+                if (!val) {
+                   this.value = ''
+                       this.$refs.textInp.textContent = ''
+                }
             }
         }
     }
