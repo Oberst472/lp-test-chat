@@ -8,7 +8,7 @@
                 </VueScroll>
             </div>
             <div class="section-aside__add-chat">
-                <UiBtn class="section-aside__add-chat-btn" theme="primary" :to="{name: 'create'}">Создать новый диалог</UiBtn>
+                <UiBtn class="section-aside__add-chat-btn" theme="primary" :to="{name: 'create'}" :disabled="!isUserAuthorized">Создать новый диалог</UiBtn>
             </div>
         </div>
         <transition name="fadeLoading">
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-    import {mapGetters, mapActions} from 'vuex';
+    import {mapState, mapGetters, mapActions} from 'vuex';
     import VueScroll from 'vuescroll';
     import BlockAsideShortItem from '@/components/blocks/asideShortItem'
 
@@ -34,6 +34,7 @@
             }
         },
         computed: {
+            ...mapState(['isUserAuthorized']),
             ...mapGetters('dialogs', ['getAllDialogs']),
           // ...mapState('dialogs', ['allDialogs']),
             dialogsLength() {

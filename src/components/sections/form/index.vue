@@ -1,6 +1,6 @@
 <template>
     <div class="section-create-dialog">
-        <form class="section-create-dialog__form" @submit.prevent="$emit('submit', value)">
+        <form class="section-create-dialog__form" @submit.prevent="send">
             <input class="section-create-dialog__inp" type="text" :placeholder="placeholder" v-model.trim="value">
             <UiBtn class="section-create-dialog__btn" theme="primary" size="medium" :disabled="!value.length" :loading="loading">
                 <slot>Создать</slot>
@@ -24,6 +24,13 @@
         data() {
             return {
                 value: ''
+            }
+        },
+        methods: {
+            send() {
+                if (this.value.length) {
+                    this.$emit('submit', this.value)
+                }
             }
         }
     }

@@ -26,7 +26,6 @@
         },
         data() {
             return {
-                lol: 1,
                 name: localStorage.getItem('name')
             }
         },
