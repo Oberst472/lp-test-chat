@@ -1,5 +1,4 @@
-# base starter
-![](/preview.jpg)
+# chat
 
 ## Project setup
 ```
